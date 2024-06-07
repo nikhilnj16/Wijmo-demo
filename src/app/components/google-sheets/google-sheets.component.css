@@ -1,0 +1,23 @@
+.wj-flexgrid {
+    max-height: 250px;
+    margin-bottom: 12px;
+    margin-top: 20px;
+  }
+  input {
+    margin-top: 20px;
+    
+  }
+  /* .custom-colors .wj-flex-grid-filter {
+    color: red;
+    font-size: 125%;
+} */
+.wj-flexgrid:not(.wj-state-focused) .wj-state-selected,
+.wj-flexgrid:not(.wj-state-focused) .wj-state-multi-selected {
+  background: #ddd;
+	color: black;
+}
+.wj-flexgrid.wj-state-focused .wj-cell.wj-state-selected {
+	border: 2px solid orange;
+  transition: all 100ms;
+}
+  

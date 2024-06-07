@@ -1,0 +1,18 @@
+
+<div class="buttons"> 
+    <div>
+      <button (click)="removeDuplicates()">Remove Duplicates</button>
+    </div>
+    <div>
+      <input class="search" placeholder="search" (input)="filterData($event)">
+    </div>
+    <div> </div>
+  </div>
+  <wj-flex-grid #flex [alternatingRowStep]="0"  [itemsSource]="data">
+    <wj-flex-grid-filter></wj-flex-grid-filter>
+    <wj-flex-grid-column [header]="'ID'" [binding]="'id'"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'Name'" [binding]="'name'"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'Department'" [binding]="'department'"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'Salary'" [binding]="'salary'"></wj-flex-grid-column>
+  </wj-flex-grid>
+  

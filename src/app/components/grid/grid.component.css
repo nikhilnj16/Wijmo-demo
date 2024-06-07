@@ -1,0 +1,8 @@
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+
+.search{
+    margin-left: 20px;
+}

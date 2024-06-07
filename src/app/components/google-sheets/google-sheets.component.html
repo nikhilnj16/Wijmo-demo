@@ -1,0 +1,65 @@
+<!-- <div class="container-fluid">
+    <label>
+        Allow Quick-Editing
+        <input [(ngModel)]="quickEdit" type="checkbox" checked="true">
+    </label>
+    <wj-flex-grid #flex
+        [allowSorting]="true"
+        [allowDragging]="true"
+        [selectionMode]="'MultiRange'"
+        [itemsSource]="data"
+        (initialized)="initializeGrid(flex)">
+        <wj-flex-grid-filter></wj-flex-grid-filter>
+    </wj-flex-grid>
+</div> -->
+
+<div class="container ">
+    <wj-flex-grid-search
+        [placeholder]="'Search'"
+        [grid]="flex">
+    </wj-flex-grid-search>
+    <label class="mx-4">
+        Allow Quick-Editing
+        <input [(ngModel)]="quickEdit" type="checkbox" checked="true">
+    </label>
+    <!-- <div class="input-group">
+        <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>    
+        <input (input)="filter($event)" class="form-control" placeholder="Filter">
+    </div>    -->
+    <!-- (sortingColumn)="applyHierarchicalFilter(flex,$event)" -->
+    <!-- (initialized)="filterInit(filter)"
+        (onEditingFilter)="test(filter,$event)"
+        (editingFilterNg)="test(filter,$event)" -->
+    <wj-group-panel class="my-3" style="display: block;"
+        [grid]="flex"
+        [placeholder]="'Drag columns here to create groups'">
+    </wj-group-panel>
+    <wj-flex-grid #flex  headersVisibility="Column"
+    [alternatingRowStep]="0" class="custom-colors"  [allowSorting]="true"  [allowDragging]="true" [selectionMode]="'MultiRange'" [itemsSource]="data" [groupSummaryPosition]="groupSummaryPosition" (initialized)="initializeGrid(flex)" >
+    <wj-flex-grid-filter 
+    (filterApplied)="edit($event)"
+        (filterChanged)="onSortedColumn(flex,$event)"
+
+              #filter>
+           </wj-flex-grid-filter>
+        <wj-flex-grid-column [binding]="'id'" [header]="'ID'" [width]="200" [isReadOnly]="true"></wj-flex-grid-column>
+        <wj-flex-grid-column [binding]="'country'" [header]="'Country'" [isRequired]="true" [dataMap]="countries"></wj-flex-grid-column>
+        <wj-flex-grid-column [binding]="'sales'" [header]="'Sales'" [aggregate]="'Sum'"  [format]="'n2'"></wj-flex-grid-column>
+        <wj-flex-grid-column [binding]="'expenses'" [header]="'Expenses'" [aggregate]="'Sum'" [format]="'n2'"></wj-flex-grid-column>
+        <wj-flex-grid-column  [binding]="'overDue'" [header]="'Overdue'"></wj-flex-grid-column>
+    </wj-flex-grid>
+
+    <label class="mx-3">
+        Group Summary Position
+        <wj-combo-box #cmbGroupPos
+            [itemsSource]="groupSummaryPositionOptions"
+            (selectedIndexChanged)="setgroupSummaryPosition(cmbGroupPos.selectedIndex)">
+        </wj-combo-box>
+    </label>
+
+    <wj-collection-view-navigator
+        headerFormat="Page {currentPage:n0} of {pageCount:n0}"
+        [byPage]="true"
+        [cv]="data">
+    </wj-collection-view-navigator>
+</div>
